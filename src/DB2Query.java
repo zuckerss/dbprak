@@ -1,3 +1,5 @@
+package src;
+
 import java.sql.*;
 import java.io.*;
 public class DB2Query {

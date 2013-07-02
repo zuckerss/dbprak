@@ -1,13 +1,12 @@
-/*
- * XMLParserDemo.java
+package src;/*
+ * src.XMLParserDemo.java
  */
 
 // allgemeine Java-Klassen 
 import java.io.IOException;
 import java.util.Vector;
-import java.util.Hashtable;
 
-// Klassen der SAX-Parser-API
+// Klassen der SAX-src.Parser-API
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 import org.xml.sax.helpers.DefaultHandler;
@@ -34,7 +33,7 @@ import org.apache.xerces.parsers.SAXParser;
 public class XMLParserDemo extends DefaultHandler {
 
   // -- Globale Variablen ----------------------------------------------------
-  /** XML Parser (mit SAX API) */
+  /** XML src.Parser (mit SAX API) */
   public final static String parserClass = "org.apache.xerces.parsers.SAXParser";
 
   /** enth&auml;lt Zeichendaten eines Elements<BR>
@@ -100,14 +99,14 @@ public class XMLParserDemo extends DefaultHandler {
   // == Call back Routinen des Parsers =======================================
   // -------------------------------------------------------------------------
   /**
-   * Wird vom Parser beim Start eines Elements aufgerufen.<BR>
+   * Wird vom src.Parser beim Start eines Elements aufgerufen.<BR>
    * (call back method)
    */
   public void startElement(String namespaceURI, String localName, String rawName, Attributes atts) {
     
     // neues Element -> Textinhalt zuruecksetzen
     elementTextBuf.setLength(0);
-    // aktuellen Elementnamen an Pfad anfügen
+    // aktuellen Elementnamen an Pfad anfï¿½gen
     xmlPath.addElement(rawName);
     
     // gesonderte Behandlungsroutinen je nach Elementtyp
@@ -123,7 +122,7 @@ public class XMLParserDemo extends DefaultHandler {
 
   // -------------------------------------------------------------------------
   /**
-   * Wird vom Parser beim Ende eines Elements aufgerufen.<BR>
+   * Wird vom src.Parser beim Ende eines Elements aufgerufen.<BR>
    * (call back method)
    */
   public void endElement(String namespaceURI, String localName, String rawName) {
@@ -168,7 +167,7 @@ public class XMLParserDemo extends DefaultHandler {
         try {
           curCity.inhabitants = Integer.parseInt(elementText);
         } catch (NumberFormatException e) {
-          System.err.println("ERR: Falscher Wert für inhabitants (" +
+          System.err.println("ERR: Falscher Wert fï¿½r inhabitants (" +
                              curCountry.name + ", " + curCity.name +
                              ", " + elementText + ")\n" + e.getMessage());
         }
@@ -178,7 +177,7 @@ public class XMLParserDemo extends DefaultHandler {
         try {
           curCity.inhabitantsRegion = Integer.parseInt(elementText);
         } catch (NumberFormatException e) {
-          System.err.println("ERR: Falscher Wert für inhabitantsRegion (" +
+          System.err.println("ERR: Falscher Wert fï¿½r inhabitantsRegion (" +
                              curCountry.name + ", " + curCity.name +
                              ", " + elementText + ")\n" + e.getMessage());
         }
@@ -188,7 +187,7 @@ public class XMLParserDemo extends DefaultHandler {
         try {
           curCity.latitude = (Float.valueOf(elementText)).floatValue();
         } catch (NumberFormatException e) {
-          System.err.println("ERR: Falscher Wert für Breite (" +
+          System.err.println("ERR: Falscher Wert fï¿½r Breite (" +
                              curCountry.name + ", " + curCity.name +
                              ", " + elementText + ")\n" + e.getMessage());
         }
@@ -198,7 +197,7 @@ public class XMLParserDemo extends DefaultHandler {
         try {
           curCity.longitude = (Float.valueOf(elementText)).floatValue();
         } catch (NumberFormatException e) {
-          System.err.println("ERR: Falscher Wert für Länge (" +
+          System.err.println("ERR: Falscher Wert fï¿½r Lï¿½nge (" +
                              curCountry.name + ", " + curCity.name +
                              ", " + elementText + ")\n" + e.getMessage());
         }
@@ -216,7 +215,7 @@ public class XMLParserDemo extends DefaultHandler {
 
   // -------------------------------------------------------------------------
   /**
-   * Wird vom Parser mit Textinhalt des aktuellen Elements aufgerufen.<BR>
+   * Wird vom src.Parser mit Textinhalt des aktuellen Elements aufgerufen.<BR>
    * (call back method)<P>
    * Achtung: Entities (auch Zeichenreferenzen wie &amp;ouml;) stellen eine
    *          Textgrenze dar und werden durch einen erneuten Aufruf dieser
@@ -227,13 +226,13 @@ public class XMLParserDemo extends DefaultHandler {
   }
   
   // -------------------------------------------------------------------------
-  /** Initialisiert Parser und started Prozeß*/
+  /** Initialisiert src.Parser und started Prozeï¿½*/
   public void doit(String dataFilename) {
 
-    // XML Parser
+    // XML src.Parser
     XMLReader parser = null;
     
-    // Parser instanziieren
+    // src.Parser instanziieren
     try {
       parser = XMLReaderFactory.createXMLReader(parserClass);
     } catch (SAXException e) {
@@ -245,14 +244,14 @@ public class XMLParserDemo extends DefaultHandler {
     // Ereignisse sollen von dieser Klasse behandelt werden
     parser.setContentHandler(this);
     
-    // Parser starten
+    // src.Parser starten
     try {
       parser.parse(dataFilename);
     } catch (SAXException e) {
-      System.err.println("Parser Exception:\n" + e.getMessage());
+      System.err.println("src.Parser Exception:\n" + e.getMessage());
       e.printStackTrace();
     } catch (IOException e) {
-      System.err.println("Parser IOException:\n" + e.getMessage());
+      System.err.println("src.Parser IOException:\n" + e.getMessage());
     }
     
   }
@@ -260,7 +259,7 @@ public class XMLParserDemo extends DefaultHandler {
   // -------------------------------------------------------------------------
   /** Gibt Aufrufsyntax zur&uuml;ck */
   public static void usage() {
-    System.out.println("usage: java XMLParserDemo <XML_FILE>");
+    System.out.println("usage: java src.XMLParserDemo <XML_FILE>");
     System.exit(1);
   }
   
